@@ -13,7 +13,6 @@ namespace mp {
         using Tokens = std::vector<mp::Token>;
 
         static auto Calculate(const MathParser::Tokens &expression) -> double;
-//        static auto Parse(const std::string& expression) -> Tokens;
 
     private:
         static auto ToReversePolishNotation(const Tokens& tokens) -> Tokens;

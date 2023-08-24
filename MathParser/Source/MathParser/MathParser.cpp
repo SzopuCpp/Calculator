@@ -50,8 +50,6 @@ namespace mp {
         for (const auto &token: tokens) {
             if (token.tokenType == Number) {
                 outputQueue.push_back(token);
-//		} else if(token.IsFunction()) {
-//            operatorStack.push(token);
             } else if (token.IsOperator()) {
                 while (!operatorStack.empty() && operatorStack.top() != LeftParenthesis
                        && (PrecedenceOf(operatorStack.top()) > PrecedenceOf(token)
@@ -103,53 +101,5 @@ namespace mp {
         }
         return result;
     }
-
-//    auto MathParser::Parse(const std::string &expression) -> Tokens {
-//        using namespace mp;
-//
-//        std::istringstream ss{expression};
-//
-//        Tokens tokens;
-//        char c;
-//
-//        while (ss >> c) {
-//            if (std::isdigit(c)) {
-//                ss.putback(c);
-//                double value;
-//                ss >> value;
-//                tokens.emplace_back(value);
-//            } else {
-//                TokenType type;
-//
-//                switch (c) {
-//                    case '+':
-//                        type = TokenType::Add;
-//                        break;
-//                    case '-':
-//                        type = TokenType::Subtract;
-//                        break;
-//                    case '*':
-//                        type = TokenType::Multiply;
-//                        break;
-//                    case '/':
-//                        type = TokenType::Divide;
-//                        break;
-//                    case '(':
-//                        type = TokenType::LeftParenthesis;
-//                        break;
-//                    case ')':
-//                        type = TokenType::RightParenthesis;
-//                        break;
-//                    default:
-//                        throw std::logic_error(std::format("Invalid character: {}", c));
-//                }
-//
-//                tokens.emplace_back(type);
-//            }
-//            if (ss.eof()) break;
-//        }
-//
-//        return tokens;
-//    }
 }
 
