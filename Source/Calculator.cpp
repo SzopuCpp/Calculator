@@ -32,7 +32,9 @@ void Calculator::AppendToken<Calculator::TokenType::Parenthesis>(const QString &
 
 template<>
 void Calculator::AppendToken<Calculator::TokenType::Dot>(const QString &value) {
-    if (!tokens.isEmpty() && tokens.last().type == TokenType::Number) {
+    if(tokens.isEmpty()) return;
+
+    if (tokens.last().type == TokenType::Number || tokens.last().value == ")") {
         if (tokens.last().value.contains(".")) return;
         tokens.last().value.append(".");
     }
