@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QtCore>
+
 #include <MathParser/MathParser.hpp>
 
 

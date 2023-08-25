@@ -1,12 +1,8 @@
-#include <MathParser/Parser/Token.hpp>
 #include "Calculator.hpp"
 
-#include <QtCore>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <qqml.h>
-#include <chrono>
-#include <thread>
 
 
 auto main(int argc, char** argv) -> int {

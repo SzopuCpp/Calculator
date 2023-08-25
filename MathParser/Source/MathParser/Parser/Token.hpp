@@ -1,6 +1,6 @@
 #pragma once
+
 #include <cstdint>
-#include <exception>
 
 
 namespace mp {
