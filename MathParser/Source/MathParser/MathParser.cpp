@@ -40,12 +40,15 @@ namespace mp {
 
     auto MathParser::ToReversePolishNotation(const Tokens &tokens) -> Tokens {
         using
-        enum mp::TokenType;
+        enum mp::TokenType; //not nessesary
 
         Tokens outputQueue;
         std::stack<mp::TokenType> operatorStack;
 
-        for (const auto &token: tokens) {
+        for (const auto &token: tokens) { //all this logick can be present inside tokens
+            //for example ( and ) can do it internally, and operator stack in RPN shoud do not have any parentheses
+            //For now you code isn't object-based, you just check enum "kind" of operator
+            //nice code shoud do it magically based on token type itself in C++
             if (token.tokenType == Number) {
                 outputQueue.push_back(token);
             } else if (token.IsOperator()) {
@@ -79,9 +82,10 @@ namespace mp {
         return outputQueue;
     }
 
+    //never ever pass primityve types as const reference!
     auto MathParser::CalculateTokens(const double &v1, const double &v2, const mp::Token &op) -> double {
         double result;
-        switch (op.tokenType) {
+        switch (op.tokenType) { //tokens should do it itself in C++ style, please check vistor pattern
             case mp::TokenType::Add:
                 result = v1 + v2;
                 break;

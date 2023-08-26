@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.20)
 project(Calculator)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -12,6 +12,8 @@ set(CALCULATOR_SOURCES
     Source/Main.cpp)
 
 add_executable(${PROJECT_NAME} ${CALCULATOR_SOURCES})
+
+# You should extend the handling of warnings by the compiler (wall etc.) optionally set the treatment of compiler warnings as compilation errors
 
 target_link_libraries(${PROJECT_NAME} PRIVATE MathParser Qt6::Core Qt6::Gui Qt6::Quick)
 target_include_directories(${PROJECT_NAME} PRIVATE MathParser/Source)
