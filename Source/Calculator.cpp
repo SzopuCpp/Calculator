@@ -10,7 +10,7 @@ void Calculator::AppendToken<Calculator::TokenType::Number>(const QString &value
         if (tokens.last().type == TokenType::Number) {
             tokens.last().value += value;
             return;
-        } else if (tokens.last().type == TokenType::Parenthesis) return;
+        } else if (tokens.last().type == TokenType::Parenthesis && tokens.last().value == ")") return;
     }
     tokens.emplaceBack(TokenType::Number, value);
 }
