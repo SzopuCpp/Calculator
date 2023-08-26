@@ -10,6 +10,8 @@ class Calculator : public QObject {
     Q_PROPERTY(QString text READ GetText NOTIFY TextChanged)
 
 public:
+    //Tokens should be needed only at the stage of parsing the entire input,
+    //there is no need to add them to the GUI (Q enum), they also partially duplicate the functionality of the parser
     enum class TokenType {
         Number,
         Operator,
@@ -20,18 +22,19 @@ public:
 
 private:
     QString text;
-    bool error {false};
+    bool error {false}; //make it simpler, just write = The compiler optimizes it anyway
+    //plus error may be type with string of informations
 
-    struct TokenData {
+    struct TokenData { //Can make all fields immutable, and as i say, its parsing, it should do not touch GUI
         TokenType type;
         QString value;
 
         bool isNegative {false};
     };
 
-    QList<TokenData> tokens { TokenData{} };
+    QList<TokenData> tokens { TokenData{} }; //list is bad idea for this, vector may be fine, or QStack
 
-    template<TokenType type>
+    template<TokenType type> //what a messy idea... I will exaplain later
     void AppendToken(const QString& value);
     void UpdateText();
 

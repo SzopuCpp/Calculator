@@ -5,6 +5,9 @@ import QtQuick.Controls.Basic
 import Calculator 1.0
 
 Window {
+
+    //using using layout would be better instead of fixed size
+
     id: root
     title: "Calculator"
     visible: true
@@ -24,13 +27,20 @@ Window {
 
     Calculator {
         id: calculator
+
+        //A bit of a bad idea to send every key in C++ class
+        //You should just pust all keys in to text
+        //Next on press = just copy this string to calculator instance (and parse it), clear text and wait for result
+        //when result happends - put result on text field
+        //in this way application logick is simpler and we just separate GUI and calculation engine
+
     }
 
     Column {
         anchors.fill: parent
         Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
-            color: "#000000"
+            color: "#000000" //in QML we have named colors for simple colors
             visible: true
             height: 80
             width: 400
